@@ -1,0 +1,43 @@
+
+version: "3.9"
+
+services:
+  database:
+    build: ./database
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: animals
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  server-a:
+    build: ./server-a
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@database:5432/animals
+      SERVER_B_URL: http://server-b:4001
+    depends_on:
+      - database
+      - server-b
+
+  server-b:
+    build: ./server-b
+    ports:
+      - "4001:4001"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@database:5432/animals
+    depends_on:
+      - database
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server-a
+
+volumes:
+  db-data:
