@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimalCard from "../components/AnimalCard";
 
 export default function Home() {
@@ -12,8 +11,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-      {animals.map(a => <AnimalCard key={a.id} animal={a} />)}
+    <div className="animal-list">
+      {animals.map(a => (
+        <AnimalCard key={a.id} animal={a} />
+      ))}
     </div>
   );
 }

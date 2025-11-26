@@ -7,7 +7,7 @@ import AdoptSuccess from "./pages/AdoptSuccess";
 export default function App() {
   return (
     <div style={{ fontFamily: 'Arial', padding: 20 }}>
-      <Link to="/" style={{ textDecoration: 'none' }}><h1>Vaasan Eläinsuoja – Adoptio</h1></Link>
+      <Link to="/" style={{ textDecoration: 'none' }}><header>Vaasan Eläinsuoja – Adoptio</header></Link>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/animal/:id" element={<Animal />} />
