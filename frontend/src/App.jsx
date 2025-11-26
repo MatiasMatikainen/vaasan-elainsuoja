@@ -6,13 +6,24 @@ import AdoptSuccess from "./pages/AdoptSuccess";
 
 export default function App() {
   return (
-    <div style={{ fontFamily: 'Arial', padding: 20 }}>
-      <Link to="/" style={{ textDecoration: 'none' }}><header>Vaasan Eläinsuoja – Adoptio</header></Link>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/animal/:id" element={<Animal />} />
-        <Route path="/success" element={<AdoptSuccess />} />
-      </Routes>
-    </div>
+    <>
+      <header>
+        <Link to="/">
+          <h1>Vaasan Eläinsuoja</h1>
+        </Link>
+      </header>
+
+      <div style={{ paddingBottom: "80px" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/animal/:id" element={<Animal />} />
+          <Route path="/success" element={<AdoptSuccess />} />
+        </Routes>
+      </div>
+
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} Vaasan Eläinsuoja ry – Kaikki oikeudet pidätetään</p>
+      </footer>
+    </>
   );
 }
