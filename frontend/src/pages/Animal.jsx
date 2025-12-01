@@ -43,33 +43,53 @@ export default function Animal() {
       {animal.status !== "vapaa" ? (
         <h3 style={{ color: "red" }}>Tämä eläin on jo adoptoitu</h3>
       ) : (
-        <form onSubmit={submit}>
+        <form className="adopt-form" onSubmit={submit}>
+
+        <div className="form-group">
+          <label>Nimi *</label>
           <input
-            placeholder="Nimi"
+            type="text"
             required
             value={form.applicant_name}
-            onChange={(e) => setForm({ ...form, applicant_name: e.target.value })}
+            onChange={e => setForm({ ...form, applicant_name: e.target.value })}
           />
+        </div>
+
+        <div className="form-group">
+          <label>Sähköposti *</label>
           <input
-            placeholder="Sähköposti"
+            type="email"
             required
             value={form.applicant_email}
-            onChange={(e) => setForm({ ...form, applicant_email: e.target.value })}
+            onChange={e => setForm({ ...form, applicant_email: e.target.value })}
           />
+        </div>
+
+        <div className="form-group">
+          <label>Puhelin *</label>
           <input
-            placeholder="Puhelin"
+            type="text"
             required
             value={form.applicant_phone}
-            onChange={(e) => setForm({ ...form, applicant_phone: e.target.value })}
+            onChange={e => setForm({ ...form, applicant_phone: e.target.value })}
           />
-          <textarea
-            placeholder="Viestisi"
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-          />
+        </div>
 
-          <button type="submit">Adoptoi minut</button>
-        </form>
+        <div className="form-group">
+          <label>Viestisi (vapaaehtoinen)</label>
+          <textarea
+            rows="4"
+            value={form.message}
+            onChange={e => setForm({ ...form, message: e.target.value })}
+          />
+        </div>
+
+        <button className="adopt-button" type="submit">
+          Adoptoi minut
+        </button>
+
+      </form>
+
       )}
     </div>
   );
